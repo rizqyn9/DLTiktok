@@ -17,7 +17,7 @@ function delay(time) {
 
 (async () => {
     const browser = await puppeteer.launch(chromeOptions);
-    for(let i= 0; i <4 ; i++){
+    for(let i= 0; i <dataArray.length ; i++){
 
       const page = await browser.newPage();
       await page.goto('https://snaptik.app');
@@ -37,8 +37,9 @@ function delay(time) {
       await page.keyboard.press('Enter');
       await console.log("Berhasil di Download ");
       await delay(3000)
-      if(i%2 == 0) await page.close().then(await puppeteer.launch(chromeOptions))
+      await page.close()
     }
+    await browser.close()
     
   })();
 
